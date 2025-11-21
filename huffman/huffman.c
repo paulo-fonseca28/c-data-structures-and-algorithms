@@ -11,7 +11,6 @@ static Node* novo_no(char caractere, int frequencia) {
     return no;
 }
 
-// Funcao para inserir um no em uma lista ordenada por frequencia
 static void inserir_ordenado(Node** lista, int* tamanho, Node* novo) {
     int i = *tamanho - 1;
     while (i >= 0 && lista[i]->frequencia > novo->frequencia) {
@@ -22,7 +21,6 @@ static void inserir_ordenado(Node** lista, int* tamanho, Node* novo) {
     (*tamanho)++;
 }
 
-// Funcao para criar arvore huffman
 Node* construir_arvore_huffman(int freq[TAM]) {
     Node* lista[TAM];
     int tamanho = 0;
@@ -56,7 +54,6 @@ Node* construir_arvore_huffman(int freq[TAM]) {
     return lista[0];
 }
 
-// Gera tabela de codigos de Huffman
 void gerar_codigos(Node* raiz, char* codigo, int profundidade, char* tabela[TAM]) {
     if (!raiz) return;
 
@@ -73,7 +70,6 @@ void gerar_codigos(Node* raiz, char* codigo, int profundidade, char* tabela[TAM]
     gerar_codigos(raiz->right, codigo, profundidade + 1, tabela);
 }
 
-// libera memoria
 void liberar_arvore(Node* raiz) {
     if (!raiz) return;
     liberar_arvore(raiz->left);
@@ -81,7 +77,6 @@ void liberar_arvore(Node* raiz) {
     free(raiz);
 }
 
-//compactar arquivos
 void compactar_arquivo(const char* entrada, const char* saida) {
     FILE* fin = fopen(entrada, "rb");
     if (!fin) {
@@ -106,7 +101,6 @@ void compactar_arquivo(const char* entrada, const char* saida) {
         return;
     }
 
-    /* Escreve o cabecalho com as frequencias */
     if (fwrite(freq, sizeof(int), TAM, fout) != TAM) {
         printf("Erro ao escrever o cabecalho no arquivo de saida.\n");
         fclose(fin);
@@ -114,7 +108,6 @@ void compactar_arquivo(const char* entrada, const char* saida) {
         return;
     }
 
-    /* Caso especial: arquivo vazio */
     if (total == 0) {
         printf("Arquivo de entrada vazio. Nada foi compactado.\n");
         fclose(fin);
@@ -134,7 +127,6 @@ void compactar_arquivo(const char* entrada, const char* saida) {
     char codigo[256];
     gerar_codigos(raiz, codigo, 0, tabela);
 
-    /* Codifica o conteudo */
     unsigned char buffer = 0;
     int bits_usados = 0;
 
@@ -197,7 +189,6 @@ void descompactar_arquivo(const char* entrada, const char* saida) {
         return;
     }
 
-    /* Caso especial: nada para descompactar */
     if (total == 0) {
         printf("Arquivo compactado nao contem dados.\n");
         fclose(fin);
@@ -213,7 +204,6 @@ void descompactar_arquivo(const char* entrada, const char* saida) {
         return;
     }
 
-    /* Caso especial: apenas um simbolo diferente no arquivo original */
     if (!raiz->left && !raiz->right) {
         for (long i = 0; i < total; i++) {
             fputc(raiz->caractere, fout);

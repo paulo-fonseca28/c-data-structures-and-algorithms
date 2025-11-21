@@ -1,63 +1,131 @@
-# Huffman Coding in C
+# Huffman Coding (C Implementation)
 
-## Overview
+## Project Overview
+Huffman Coding is a classic greedy algorithm for lossless data compression. This project implements a console-based compressor and decompressor for text files in C, applying fundamental data structure concepts like binary trees and priority queues. Developed in 2023 as part of my learning path in algorithms and C programming.
 
-This repository contains an implementation of the Huffman coding algorithm in C, developed as part of my practical learning journey through classic data structures and algorithms in 2023. The main focus is on building a functional and well-organized compressor and decompressor for text files using lossless compression. [web:27][web:24]
+---
 
-## How Huffman Coding Works
+## Features
 
-Huffman coding is a greedy algorithm used for lossless data compression. It assigns shorter codes to more frequent characters and longer codes to less frequent ones, reducing the overall size of the encoded data. The key steps are:
+- Analyze character frequency in input files
+- Build and visualize a Huffman tree for compression
+- Generate and assign prefix-free codes to each character
+- Compress and decompress text files efficiently
+- Display compression ratio and compare file sizes
+- Graceful handling of edge cases (empty files, single-character files, etc.)
+- Modular and beginner-friendly codebase
 
-- **Frequency Analysis:** Scan the input data to count the occurrence of each character.
-- **Huffman Tree Construction:** Insert all characters as leaf nodes into a priority queue (min-heap) based on frequency. Repeatedly merge the two nodes with the lowest frequency into a new parent node, continuing until only one node (the root) remains.
-- **Code Generation:** Traverse the tree to assign variable-length binary codes to each character—assigning '0' to a left branch and '1' to a right branch.
-- **Encoding:** Replace each character in the input with its Huffman code to produce the compressed output.
-- **Decoding:** The compressed file stores both the encoded data and a serialization of the tree. The decoder reconstructs the tree and uses it to map the binary codes back to the original characters. [web:31][web:32][web:34]
+---
 
-## Concepts and Techniques Applied
+## How It Works
 
-- Greedy Algorithms
-- Binary Trees
-- Priority Queues (Min-Heaps)
-- Recursive Tree Traversal
-- File I/O in C
-- Bitwise Manipulation
-- Prefix-Free Encoding
+### Workflow
 
-## What I Learned
+1. **Frequency Analysis**: Reads the input file and counts the occurrences of each character.
+2. **Huffman Tree Construction**: Uses a priority queue (sorted array/min-heap) to combine least frequent nodes into a binary tree.
+3. **Code Generation**: Traverses the tree recursively, assigning binary codes to each character.
+4. **Compression**: Encodes the original content, writes a frequency header and bit-packed data to output.
+5. **Decompression**: Reads the header, reconstructs the tree, and decodes the binary data back to text.
 
-- Applying greedy strategies for optimal solutions in tree-based algorithms
-- Working with dynamic memory allocation and pointer-based data structures in C
-- Handling edge cases, input validation, and organizing modular code in larger projects
-- Using bitwise operations for custom file encoding and decoding
-- Documenting code, building user-friendly CLIs, and debugging algorithmic logic
+### Menu Options
 
-## Usage
+- Compress file
+- Decompress file
+- Compare original and compressed file sizes
+- Option to remove last generated files
+- Robust error messages for invalid input or file access issues
 
-### Compilation
+---
 
-```bash
-gcc -o huffman main.c huffman.c
+## Project Structure
+
+| File            | Contents                                                        |
+|-----------------|-----------------------------------------------------------------|
+| `main.c`        | User interface, menu logic, file orchestration                  |
+| `huffman.c`     | Huffman tree management, encoding/decoding, file compression    |
+| `huffman.h`     | Type definitions and function prototypes                        |
+| Test files      | Example `.txt` files for running and benchmarking               |
+
+---
+
+## Example Data Structure
+
+Huffman tree node:
+
+```c
+typedef struct node {
+char character;
+int frequency;
+struct node *left, *right;
+} Node;
 ```
 
+Codes are stored in a lookup table (array of strings) indexed by character.
 
-### Compressing a File
+---
 
-Run the program and select the “Compress” option when prompted. Provide the input and output filenames as requested.
+## Compilation & Execution
 
-### Decompressing a File
+### Dependencies
+- GCC (or compatible C compiler)
+- Terminal / command line access
 
-Select the “Decompress” option and provide the compressed file and the desired output filename.
+### How to Compile
 
-## File Structure
+```bash
+gcc -Wall -Wextra -O2 -o huffman main.c huffman.c
+```
 
-- `main.c`: Command-line interface and orchestration of user interactions
-- `huffman.c` / `huffman.h`: Huffman logic, tree handling, encoding/decoding functions
-- Sample text files for testing
+### How to Run
 
-## References & Further Reading
+Launch in terminal:
 
-- [Huffman coding on Wikipedia](https://en.wikipedia.org/wiki/Huffman_coding) [web:34]
-- [Project report and algorithm analysis](https://www.scribd.com/document/841290191/Project-Huffman-Code-Final) [web:32]
-- Classic textbooks and coursework exercises on data compression and greedy algorithms
+```bash
+./huffman 
+```
+
+Follow the menu prompts to compress, decompress or compare files.
+
+---
+
+## Learning Outcomes
+
+By developing this project, I practiced:
+
+- Applying greedy algorithms in practical scenarios
+- Building and traversing binary trees in C
+- Dynamic memory allocation and management
+- Using bitwise operations for file encoding and decoding
+- Modular programming and separation of concerns
+- Handling edge cases and user input validation
+- Writing documentation and user-friendly command-line interfaces
+
+---
+
+## Possible Improvements & Next Steps
+
+- Add visualization for Huffman tree (text/graphical output)
+- Support for more file formats (binary, utf-8)
+- Improve error handling and robustness
+- Add unit tests and additional edge-case checks
+- Refactor into multiple source files for even clearer separation
+- Persist compression metadata for future compatibility
+- Add benchmark and performance reports
+
+---
+
+## References
+
+- [Wikipedia: Huffman coding](https://en.wikipedia.org/wiki/Huffman_coding)
+- [Codecademy: Huffman Coding - Algorithm](https://www.codecademy.com/resources/docs/general/algorithm/huffman-coding)
+- [Project Huffman Code - Scribd](https://www.scribd.com/document/841290191/Project-Huffman-Code-Final)
+
+---
+
+## Author
+
+Paulo Fonseca  
+Information Systems student, Universidade Federal de Uberlândia  
+GitHub: [github.com/paulo-fonseca28](https://github.com/paulo-fonseca28)
+
 
