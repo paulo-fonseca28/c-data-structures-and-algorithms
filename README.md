@@ -14,7 +14,7 @@ This repository presents a curated collection of classic data structure and algo
 
 ## Others
 
-- [`client-server_basics/`] (./client-server_basics): Basic implementation of the classic system arquitecture "client-server", in form of a basic calculator. 
+- [`client-server_basics/`](./client-server_basics): Basic implementation of the classic client-server architecture in C, where a TCP server exposes a simple calculator service and a TCP client sends operations and operands over the network. The project focuses on socket programming fundamentals, request-response communication, and process interaction using a text-based protocol.
 
 ---
 
@@ -52,6 +52,7 @@ gcc -Wall -O2 -o program main.c module.c
 - Practicing algorithmic strategies: greedy, traversal, shortest paths
 - Advanced use of C: pointers, dynamic memory, modularization, and error checking
 - Writing robust and readable code suitable for open source and technical interviews
+- Basic implementation of a TCP/IP client-server application
 
 ---
 
