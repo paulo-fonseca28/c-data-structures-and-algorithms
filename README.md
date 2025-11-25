@@ -12,6 +12,10 @@ This repository presents a curated collection of classic data structure and algo
 - [`huffman/`](./huffman): Implementation of Huffman coding for file compression and decompression, featuring a greedy binary-tree algorithm and bitwise file operations.
 - [`graphs/`](./graphs): Modular, flexible graph library. Supports directed/undirected and weighted/unweighted graphs, efficient adjacency-list representation, and practical algorithms for graph analysis.
 
+## Others
+
+- [`client-server_basics/`] (./client-server_basics): Basic implementation of the classic system arquitecture "client-server", in form of a basic calculator. 
+
 ---
 
 ## Technologies
