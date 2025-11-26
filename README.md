@@ -11,6 +11,7 @@ This repository presents a curated collection of classic data structure and algo
 - [`circular_queue/`](./circular_queue): Dynamic circular queue (FIFO) using a singly-linked list. Demonstrates professional queue manipulation and memory management.
 - [`huffman/`](./huffman): Implementation of Huffman coding for file compression and decompression, featuring a greedy binary-tree algorithm and bitwise file operations.
 - [`graphs/`](./graphs): Modular, flexible graph library. Supports directed/undirected and weighted/unweighted graphs, efficient adjacency-list representation, and practical algorithms for graph analysis.
+- [`linked-list`](./linked-list): Integer addition using singly linked lists in reversed digit order. Demonstrates digit-wise number representation, list–integer conversion, and safe dynamic memory management.
 
 ## Others
 
