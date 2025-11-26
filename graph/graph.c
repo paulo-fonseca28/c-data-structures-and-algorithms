@@ -78,7 +78,7 @@ int removeEdge(Graph* g, int from, int to) {
 }
 
 // Flexible loader for two or three columns
-int loadGraphFromFile(Graph* g, const char* filename, int isDirected) {
+int loadGraphFromFile(Graph* g, const char* filename, int isDirected) {//New parameter 'isDirected'.
     FILE* file = fopen(filename, "r");
     if (!file) {
         printf("Error opening file '%s'\n", filename);
@@ -98,7 +98,7 @@ int loadGraphFromFile(Graph* g, const char* filename, int isDirected) {
         if (from == -1) from = addVertex(g, labelFrom);
         if (to == -1) to = addVertex(g, labelTo);
         addEdge(g, from, to, weight);
-        if (!isDirected) addEdge(g, to, from, weight);
+        if (!isDirected) addEdge(g, to, from, weight); // New feature: add reverse edge for undirected graphs
     }
     fclose(file);
     return 0;
